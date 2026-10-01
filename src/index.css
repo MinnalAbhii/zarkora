@@ -1,0 +1,1040 @@
+/* =========================================================
+   ZARKORA
+   GLOBAL DESIGN SYSTEM
+   ========================================================= */
+
+
+/* =========================================================
+   01. ROOT VARIABLES
+   ========================================================= */
+
+:root {
+  --bg: #080707;
+  --wine: #5a1220;
+  --gold: #d6ab5e;
+  --ivory: #f4ecdb;
+  --dim: rgba(244, 236, 219, 0.55);
+  --line: rgba(214, 171, 94, 0.16);
+
+  --hd:
+    'Big Shoulders Display',
+    'Oswald',
+    'Arial Narrow',
+    sans-serif;
+}
+
+
+/* =========================================================
+   02. GLOBAL RESET
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+
+  /* Hide scrollbar globally */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+
+/* Chrome / Edge / Safari scrollbar */
+
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+
+/* =========================================================
+   03. HTML / BODY / ROOT
+   ========================================================= */
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+
+  background: var(--bg);
+  color: var(--ivory);
+
+  font-family: 'Manrope', system-ui, sans-serif;
+
+  /* Prevent browser page scrolling */
+  overflow: hidden;
+
+  /* Mobile touch behaviour */
+  -webkit-overflow-scrolling: touch;
+}
+
+
+/* =========================================================
+   04. GLOBAL BODY GRAIN / NOISE
+   ========================================================= */
+
+body::after {
+  content: '';
+
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: 99;
+
+  opacity: 0.07;
+
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence baseFrequency='.9' numOctaves='2'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>");
+}
+
+
+/* =========================================================
+   05. MAIN APP CONTAINER
+   ========================================================= */
+
+.app {
+  position: relative;
+
+  width: 100%;
+  height: 100dvh;
+
+  max-width: 430px;
+
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      120% 55% at 50% -8%,
+      #3d1019 0%,
+      transparent 60%
+    ),
+    var(--bg);
+}
+
+
+/* =========================================================
+   06. HEADER
+   ========================================================= */
+
+.hdr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding:
+    calc(env(safe-area-inset-top) + 12px)
+    18px
+    6px;
+
+  min-height: 64px;
+
+  flex-shrink: 0;
+}
+
+
+/* ZARKORA wordmark */
+
+.wm {
+  font: 800 22px var(--hd);
+
+  letter-spacing: 0.28em;
+
+  color: var(--ivory);
+}
+
+
+/* =========================================================
+   07. MAIN SCROLL CONTAINER
+   ========================================================= */
+
+.scroll {
+  flex: 1;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding: 6px 18px 28px;
+
+  -webkit-overflow-scrolling: touch;
+
+  /* Firefox */
+  scrollbar-width: none;
+
+  /* Old Edge / IE */
+  -ms-overflow-style: none;
+
+  /* Allow vertical phone swipe */
+  touch-action: pan-y;
+}
+
+
+/* Chrome / Edge / Safari */
+
+.scroll::-webkit-scrollbar {
+  display: none !important;
+
+  width: 0 !important;
+  height: 0 !important;
+}
+
+
+/* =========================================================
+   08. BOTTOM NAVIGATION
+   ========================================================= */
+
+.bn {
+  display: flex;
+
+  flex-shrink: 0;
+
+  border-top: 1px solid var(--line);
+
+  background: rgba(8, 7, 7, 0.94);
+
+  backdrop-filter: blur(16px);
+
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+
+/* Bottom navigation buttons */
+
+.bn button {
+  flex: 1;
+
+  min-height: 58px;
+
+  background: none;
+
+  border: 0;
+
+  color: var(--dim);
+
+  font:
+    600 11px var(--hd);
+
+  letter-spacing: 0.2em;
+
+  display: grid;
+
+  justify-items: center;
+  align-content: center;
+
+  gap: 4px;
+}
+
+
+/* Active navigation */
+
+.bn .on {
+  color: var(--gold);
+}
+
+
+/* Active icon glow */
+
+.bn .on svg {
+  filter:
+    drop-shadow(
+      0 0 6px
+      rgba(214, 171, 94, 0.8)
+    );
+}
+
+
+/* =========================================================
+   09. TYPOGRAPHY
+   ========================================================= */
+
+.h1 {
+  font:
+    800 40px/1 var(--hd);
+
+  letter-spacing: 0.03em;
+
+  text-transform: uppercase;
+
+  margin: 6px 0 14px;
+}
+
+
+.lbl {
+  font:
+    600 11px var(--hd);
+
+  letter-spacing: 0.24em;
+
+  color: var(--gold);
+
+  text-transform: uppercase;
+}
+
+
+.big {
+  font:
+    800 58px/1 var(--hd);
+}
+
+
+.dim {
+  color: var(--dim);
+
+  font-size: 14px;
+}
+
+
+.tiny {
+  font-size: 11px;
+
+  margin-top: 6px;
+}
+
+
+/* =========================================================
+   10. GLASS CARDS
+   ========================================================= */
+
+.glass {
+  position: relative;
+
+  border:
+    1px solid var(--line);
+
+  border-radius: 12px;
+
+  padding: 16px;
+
+  margin-bottom: 12px;
+
+  background:
+    linear-gradient(
+      160deg,
+      rgba(90, 18, 32, 0.3),
+      rgba(255, 255, 255, 0.02) 65%
+    );
+
+  backdrop-filter: blur(12px);
+}
+
+
+/* Hero card */
+
+.hero {
+  background:
+    linear-gradient(
+      160deg,
+      rgba(110, 20, 36, 0.5),
+      rgba(20, 8, 10, 0.6) 70%
+    );
+
+  box-shadow:
+    0 0 40px
+    rgba(90, 18, 32, 0.35);
+}
+
+
+/* =========================================================
+   11. BUTTONS
+   ========================================================= */
+
+.btn {
+  width: 100%;
+
+  min-height: 52px;
+
+  border: 0;
+
+  border-radius: 10px;
+
+  font:
+    800 15px var(--hd);
+
+  letter-spacing: 0.22em;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e8c47c,
+      #b98a3e
+    );
+
+  color: #1a0d05;
+
+  box-shadow:
+    0 0 24px
+    rgba(214, 171, 94, 0.22);
+}
+
+
+/* Ghost button */
+
+.btn.ghost {
+  background: transparent;
+
+  color: var(--gold);
+
+  border:
+    1px solid var(--line);
+
+  box-shadow: none;
+}
+
+
+/* Small button */
+
+.btn.sm {
+  width: auto;
+
+  min-height: 38px;
+
+  padding: 0 14px;
+
+  font-size: 12px;
+
+  letter-spacing: 0.14em;
+
+  flex: none;
+}
+
+
+/* =========================================================
+   12. PROGRESS BAR
+   ========================================================= */
+
+.bar {
+  height: 6px;
+
+  border-radius: 9px;
+
+  background:
+    rgba(255, 255, 255, 0.08);
+
+  overflow: hidden;
+
+  margin: 10px 0;
+}
+
+
+.bar i {
+  display: block;
+
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--wine),
+      var(--gold)
+    );
+}
+
+
+/* =========================================================
+   13. MEMBER / LIST ROW
+   ========================================================= */
+
+.row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 12px 0;
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.05);
+}
+
+
+/* Middle content expands */
+
+.row > div:nth-child(2) {
+  flex: 1;
+
+  min-width: 0;
+}
+
+
+/* Row name */
+
+.row b {
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   14. AVATAR
+   ========================================================= */
+
+.av {
+  display: grid;
+
+  place-items: center;
+
+  font-family: var(--hd);
+
+  font-weight: 800;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--wine),
+      #22070c
+    );
+
+  border:
+    1px solid var(--line);
+
+  border-radius: 50%;
+
+  color: var(--gold);
+
+  flex: none;
+
+  width: 40px;
+  height: 40px;
+}
+
+
+/* =========================================================
+   15. PAYMENT STATUS PILLS
+   ========================================================= */
+
+.pill {
+  font:
+    700 10px var(--hd);
+
+  letter-spacing: 0.16em;
+
+  padding: 4px 8px;
+
+  border-radius: 99px;
+
+  border: 1px solid;
+
+  white-space: nowrap;
+}
+
+
+/* Paid */
+
+.ok {
+  color: #8fd19e;
+
+  border-color:
+    rgba(143, 209, 158, 0.3);
+}
+
+
+/* Pending */
+
+.wait {
+  color: var(--gold);
+
+  border-color: var(--line);
+}
+
+
+/* Not paid */
+
+.no {
+  color: #e59090;
+
+  border-color:
+    rgba(229, 144, 144, 0.3);
+}
+
+
+/* =========================================================
+   16. COUNTDOWN
+   ========================================================= */
+
+.cd {
+  display: flex;
+
+  gap: 10px;
+
+  margin: 14px 0 8px;
+}
+
+
+.cd div {
+  flex: 1;
+
+  border-left:
+    1px solid var(--gold);
+
+  padding-left: 10px;
+}
+
+
+.cd b {
+  display: block;
+
+  font:
+    800 44px/1 var(--hd);
+}
+
+
+.cd span {
+  font:
+    600 10px var(--hd);
+
+  letter-spacing: 0.2em;
+
+  color: var(--gold);
+}
+
+
+/* =========================================================
+   17. STAT CARDS
+   ========================================================= */
+
+.stats {
+  display: flex;
+
+  gap: 8px;
+
+  margin: 12px 0;
+}
+
+
+.stats div {
+  flex: 1;
+
+  text-align: center;
+
+  border:
+    1px solid var(--line);
+
+  border-radius: 10px;
+
+  padding: 10px 2px;
+}
+
+
+.stats b {
+  display: block;
+
+  font:
+    800 26px var(--hd);
+}
+
+
+.stats span {
+  font:
+    600 10px var(--hd);
+
+  letter-spacing: 0.16em;
+
+  color: var(--dim);
+}
+
+
+/* =========================================================
+   18. FORM ELEMENTS
+   ========================================================= */
+
+input,
+textarea,
+select {
+  width: 100%;
+
+  min-height: 50px;
+
+  padding: 0 14px;
+
+  margin-bottom: 10px;
+
+  border-radius: 10px;
+
+  border:
+    1px solid var(--line);
+
+  background:
+    rgba(255, 255, 255, 0.04);
+
+  color: var(--ivory);
+
+  font:
+    500 16px Manrope,
+    sans-serif;
+
+  outline: none;
+}
+
+
+/* Focus */
+
+input:focus,
+textarea:focus {
+  border-color: var(--gold);
+}
+
+
+/* Textarea */
+
+textarea {
+  padding: 12px 14px;
+
+  min-height: 80px;
+}
+
+
+/* Select dropdown */
+
+select option {
+  background: #120a0c;
+}
+
+
+/* =========================================================
+   19. MODAL BACKDROP
+   ========================================================= */
+
+.mbg {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 50;
+
+  background:
+    rgba(0, 0, 0, 0.72);
+
+  display: flex;
+
+  align-items: flex-end;
+}
+
+
+/* =========================================================
+   20. BOTTOM SHEET
+   ========================================================= */
+
+.sheet {
+  width: 100%;
+
+  max-height: 88%;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  background: #120a0c;
+
+  border-top:
+    1px solid var(--line);
+
+  border-radius:
+    18px 18px 0 0;
+
+  padding:
+    20px
+    18px
+    calc(
+      env(safe-area-inset-bottom) + 20px
+    );
+
+  /* Hide scrollbar */
+
+  scrollbar-width: none;
+
+  -ms-overflow-style: none;
+
+  /* Touch scrolling */
+
+  -webkit-overflow-scrolling: touch;
+
+  touch-action: pan-y;
+}
+
+
+/* Hide bottom sheet scrollbar */
+
+.sheet::-webkit-scrollbar {
+  display: none !important;
+
+  width: 0 !important;
+  height: 0 !important;
+}
+
+
+/* =========================================================
+   21. CENTER / SPLASH CONTENT
+   ========================================================= */
+
+.ctr {
+  flex: 1;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 24px;
+}
+
+
+/* =========================================================
+   22. ZARKORA LOGO
+   ========================================================= */
+
+.logo {
+  font:
+    800 44px var(--hd);
+
+  padding-left: 0.22em;
+
+  text-shadow:
+    0 0 40px
+    rgba(214, 171, 94, 0.35);
+}
+
+
+/* =========================================================
+   23. TAGLINE
+   ========================================================= */
+
+.tag {
+  font:
+    600 13px var(--hd);
+
+  letter-spacing: 0.34em;
+
+  color: var(--gold);
+
+  margin-top: 10px;
+}
+
+
+/* =========================================================
+   24. TIC TAC TOE CELL
+   ========================================================= */
+
+.cell {
+  aspect-ratio: 1;
+
+  display: grid;
+
+  place-items: center;
+
+  font:
+    800 40px var(--hd);
+
+  border:
+    1px solid var(--line);
+
+  border-radius: 8px;
+
+  background:
+    rgba(255, 255, 255, 0.03);
+
+  color: var(--gold);
+}
+
+
+/* =========================================================
+   25. THREE COLUMN GRID
+   ========================================================= */
+
+.grid3 {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 8px;
+
+  margin: 14px 0;
+}
+
+
+/* =========================================================
+   26. SNAKE GAME
+   ========================================================= */
+
+.sn {
+  display: grid;
+
+  grid-template-columns:
+    repeat(14, 1fr);
+
+  border:
+    1px solid var(--line);
+
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  aspect-ratio: 1;
+}
+
+
+.sn i {
+  aspect-ratio: 1;
+}
+
+
+/* Snake */
+
+.sn .s {
+  background: var(--gold);
+}
+
+
+/* Food */
+
+.sn .f {
+  background: #c0384f;
+
+  border-radius: 50%;
+}
+
+
+/* =========================================================
+   27. UPDATES
+   ========================================================= */
+
+.upd {
+  border-left:
+    2px solid var(--gold);
+}
+
+
+/* Event */
+
+.upd.EVENT {
+  border-left-color: #c0384f;
+}
+
+
+/* Reminder */
+
+.upd.REMINDER {
+  border-left-color: #9c7a3c;
+}
+
+
+/* Birthday */
+
+.upd.BIRTHDAY {
+  border-left-color: #e8c47c;
+}
+
+
+/* =========================================================
+   28. MOBILE SAFETY
+   ========================================================= */
+
+button,
+input,
+textarea,
+select {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+
+input,
+textarea {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+
+/* Prevent accidental horizontal overflow */
+
+body,
+#root,
+.app,
+.scroll {
+  max-width: 100%;
+}
+
+
+/* =========================================================
+   29. SMALL PHONE — 360px
+   ========================================================= */
+
+@media (max-width: 360px) {
+
+  .hdr {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .scroll {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .h1 {
+    font-size: 36px;
+  }
+
+  .big {
+    font-size: 50px;
+  }
+
+  .cd {
+    gap: 6px;
+  }
+
+  .cd b {
+    font-size: 38px;
+  }
+
+  .cd span {
+    font-size: 8px;
+  }
+
+}
+
+
+/* =========================================================
+   30. LARGER PHONE — 400px+
+   ========================================================= */
+
+@media (min-width: 400px) {
+
+  .scroll {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+}
+
+
+/* =========================================================
+   31. REDUCE MOTION — ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+
+    scroll-behavior: auto !important;
+  }
+
+}
