@@ -40,3 +40,4 @@ The Admin → Members → Add Member flow calls the `create-member` Edge Functio
 ## Important
 
 The frontend uses only the Supabase publishable key. The service-role key belongs only in Supabase's server-side Edge Function environment.
+ZARKORA - Class Journey App
